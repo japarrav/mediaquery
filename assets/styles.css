@@ -1,0 +1,125 @@
+/* Estilos generales */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: grid;
+    grid-template-areas: 
+        "header"
+        "main"
+        "footer";
+    grid-template-rows: auto 1fr auto;
+    grid-gap: 10px;
+    min-height: 100vh;
+}
+
+/* Barra de navegación (Mobile - Vertical) */
+.nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.nav ul li {
+    margin: 5px 0;
+}
+
+.nav ul li a {
+    text-decoration: none;
+    color: white;
+    padding: 10px;;
+    display: block;
+}
+
+/* Áreas de la grid */
+.header {
+    grid-area: header;
+    background-color: #F08080;
+}
+
+.filters {
+    grid-area: filters;
+    background-color: #f4f4f4;
+    padding: 10px;
+    display: none; /* Oculto en mobile */
+}
+
+.main {
+    grid-area: main;
+    padding: 10px;
+}
+
+.footer {
+    grid-area: footer;
+    background-color: #F08080	;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Flexbox para los items */
+.items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.item {
+    padding: 20px;
+    flex: 1 1 calc(50% - 10px); /* Dos columnas en mobile */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.btn-compra{
+    background-color: #007bff; /* Color del botón */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    align-self: center; /* Asegura que esté centrado */
+}
+
+/* Media Queries para Desktop */
+@media (min-width: 576px) {
+    .container {
+        grid-template-areas: 
+            "header header"
+            "filters main"
+            "footer footer";
+        grid-template-columns: 200px 1fr;
+    }
+
+    .filters {
+        display: block; /* Visible en desktop */
+    }
+
+    .item {
+        flex: 1 1 calc(33.333% - 10px); /* Tres columnas en desktop */
+    }
+
+    /* Barra de navegación (Desktop - Horizontal) */
+    .nav ul {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .nav ul li {
+        margin: 0;
+    }
+
+    .nav ul li a {
+        padding: 10px 20px;
+    }
+}
